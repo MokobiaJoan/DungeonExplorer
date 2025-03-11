@@ -1,22 +1,33 @@
+cmake_minimum_required(VERSION 3.31)
 
+cmake_policy(SET CMP0048 NEW)
 
-
-cmake_minimum_required(VERSION 3.10)
-project(DungeonExplorer)
-
-#Enabling C++17 or higher
+project(DungeonExplorer VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+#include_directories(include)
 
-# main executable file
+file(GLOB_RECURSE GAME_SOURCES "src/*.cpp")
+file(GLOB_RECURSE GAME_HEADERS "include/*.hpp")
+
+add_library(DungeonExplorerLib ${GAME_SOURCES} ${GAME_HEADERS})
+
+target_include_directories(DungeonExplorerLib PUBLIC include)
+
 add_executable(DungeonExplorer src/main.cpp)
 
-#testing subdirectory
-
-add_executable(runTests ${TEST_SOURCES})
-add_test(NAME BasicTests COMMAND runTests)
+target_link_libraries(DungeonExplorer PRIVATE DungeonExplorerLib)
 
 enable_testing()
-add_subdirectory(tests)
+
+file(GLOB_RECURSE TEST_SOURCES "tests/*.cpp")
+
+if(TEST_SOURCES)
+add_executable(runTests ${TEST_SOURCES})
+
+target_link_libraries(runTests PRIVATE DungeonExplorerLib)
+
+add_test(NAME DungeonExplorerTests COMMAND runTests)
+endif()
