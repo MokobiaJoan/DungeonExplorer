@@ -1,5 +1,4 @@
-add_executable(DungeonExplorerTests test_main.cpp)
-add_test(NAME BasicTests COMMAND DungeonExplorerTests)
+
 
 
 cmake_minimum_required(VERSION 3.10)
@@ -15,5 +14,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(DungeonExplorer src/main.cpp)
 
 #testing subdirectory
+
+add_executable(DungeonExplorerTests ${test_main.cpp})
+add_test(NAME BasicTests COMMAND DungeonExplorerTests)
+
 enable_testing()
 add_subdirectory(tests)
