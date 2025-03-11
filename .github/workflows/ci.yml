@@ -22,7 +22,7 @@ jobs:
 
             - name: Configure CMake
               run: |
-                cmake -B build -S .
+                cmake -B build -S .DCMAKE_CXX_STANDARD=17 
 
             - name: Build
               run: |
