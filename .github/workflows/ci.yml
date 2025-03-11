@@ -2,7 +2,7 @@ name: C++ CI
 
 on:
     push:
-        branches: 
+        branches:
             - main
     pull_request:
         branches:
@@ -13,22 +13,18 @@ jobs:
         runs-on: ubuntu-latest
         
         steps:
-            - name: Checkout repository
+            - name: Check out repository
               uses: actions/checkout@v3
 
             - name: Install dependencies
-              run: |
-                sudo apt-get update && sudo apt-get install -y cmake build-essential
+              run: sudo apt-get update && sudo apt-get install -y cmake build-essential
 
             - name: Configure CMake
-              run: |
-                cmake -B build -S . -DCMAKE_CXX_STANDARD=17 
+              run: cmake -B build -S .
 
             - name: Build
-              run: |
-                cmake --build build
+              run: cmake --build build
 
             - name: Run Tests
-              run: |
-                ctest --test-dir build
+              run: ctest --test-dir build
              
