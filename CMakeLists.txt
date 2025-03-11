@@ -15,8 +15,8 @@ add_executable(DungeonExplorer src/main.cpp)
 
 #testing subdirectory
 
-add_executable(DungeonExplorerTests ${test_main.cpp})
-add_test(NAME BasicTests COMMAND DungeonExplorerTests)
+add_executable(runTests ${TEST_SOURCES})
+add_test(NAME BasicTests COMMAND runTests)
 
 enable_testing()
 add_subdirectory(tests)
