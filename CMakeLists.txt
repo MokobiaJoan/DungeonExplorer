@@ -30,4 +30,4 @@ add_executable(runTests ${TEST_SOURCES})
 target_link_libraries(runTests PRIVATE DungeonExplorerLib)
 
 add_test(NAME DungeonExplorerTests COMMAND runTests)
-endif()]
+endif()
