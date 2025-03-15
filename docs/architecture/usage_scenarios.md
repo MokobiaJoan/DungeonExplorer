@@ -1,5 +1,20 @@
-### Game Scenario
+Non-Functional Requirements
 
+1. Performance:
+   - The game should run smoothly on standard desktop hardware with minimal memory overhead.
+2. Platform Compatibility:
+   - Must compile and run on Windows, Linux, and macOS using standard C++17 (or later).
+3. Maintainability:
+   - Follow consistent naming conventions and modular design practices to ensure the codebase is clean and easily extensible.
+4. User Interface:
+   - Start with a command-line interface that clearly displays game state and prompts.
+   - Design the architecture to allow for a future transition to a graphical interface without major refactoring.
+
+
+
+
+
+### Game Scenario
 
 #### Starting the Game
 
@@ -11,9 +26,9 @@
 
 2. Character Selection:
    - The player is prompted to choose a character class: Warrior, Mage, or Rogue.
-   - The player reads the descriptions and selects "Warrior".
+   - The player reads the descriptions and selects any character of their choice.
    - The player enters their character's name and confirms the selection.
-   - The characterSelection() method of the DungeonExplorer class is called, creating an instance of the Warrior class.
+   - The characterSelection() method of the DungeonExplorer class is called, creating an instance of the chosen character's class.
 
 #### Entering the Room
 
@@ -37,7 +52,7 @@
 6. Combat Encounter:
    - The player encounters an enemy in the room.
    - The engage() method of the Combat class is called to start the combat.
-   - During the player's turn, the player uses the useShield() method of the Warrior class to block damage.
+   - During the player's turn, the player uses any of its abilities(methods) in combat.
    - The enemy takes its turn, and the combat continues until the enemy is defeated.
 
 #### Ending the Game
