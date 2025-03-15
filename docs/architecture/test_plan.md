@@ -1,24 +1,47 @@
-Test Plan
+### Test Plan Description
 
- Testing Approach
-1. Unit Tests  
-   - Verify individual classes (e.g., Player, Enemy, `Inventory`) in isolation.  
-   - Confirm methods like takeDamage(), useItem(), move() behave as expected.
-2. Integration Tests  
-   - Test how classes interact within a single scenario (e.g., Player enters a Room, fights Enemy, picks up `Item`).  
-   - Check dungeon loading and room transitions.
-3. Acceptance Tests  
-   - Validate end-to-end gameplay: starting the game, exploring multiple rooms, defeating enemies, using items, and finishing a level.  
-   - Confirm that the game loops correctly (e.g., victory/defeat conditions).
 
- Tools
-- Google Test, Catch2, or doctest for automated unit testing.  
-- Built-in assert statements for quick checks if needed.
+#### Objectives:
+- Verify that all game components work together seamlessly.
+- Ensure the game flow is consistent and bug-free.
+- Test for edge cases such as invalid inputs or unexpected player actions.
+- Confirm that saving and loading the game state works correctly.
 
- Coverage Goals
-- Aim for 80%+ code coverage on critical classes (`Player`, Enemy, Room, `Dungeon`).  
-- Ensure coverage of main logic paths for combat, item usage, and room transitions.
+#### Test Cases:
 
- Test Execution
-- Local Environment: Developers run cmake --build followed by ctest or a similar command in VSCode/CLI.  
-- CI Pipeline: Every commit triggers a build on GitHub Actions, automatically compiling and running all tests. Failures are flagged before merging pull requests.
+1. Character Selection:
+   - Test: Ensure the player can select Warrior, Mage, or Rogue.
+   - Expected Result: The correct character instance is created and initialized with the proper attributes.
+
+2. Room Interaction:
+   - Test: Verify that entering a room displays the correct description and handles the presence of enemies or NPCs.
+   - Expected Result: The enter() method of the Room class is called, and the room’s contents are displayed accurately.
+
+3. Combat System:
+   - Test: Simulate combat interactions, including player and enemy turns.
+   - Expected Result: Damage calculations and actions are executed correctly, and combat ends when either the player or enemy is defeated.
+
+4. Inventory System:
+   - Test: Add items to the inventory and use them during gameplay.
+   - Expected Result: Items are added correctly, and using them results in the desired effect (e.g., restoring health).
+
+5. Dungeon Navigation:
+   - Test: Explore the dungeon by entering the single room.
+   - Expected Result: The explore() and enter() methods are called, and the game transitions to the room view.
+
+6. Saving and Loading:
+   - Test: Save the game at various points and reload the saved state.
+   - Expected Result: The game state is saved and restored accurately, allowing the player to continue where they left off.
+
+7. Game Flow:
+   - Test: Play through the game from start to finish, testing transitions between different components (e.g., room to combat).
+   - Expected Result: The game flow is smooth, and there are no crashes or logical errors.
+
+8. Error Handling:
+   - Test: Input invalid commands or data during gameplay.
+   - Expected Result: The game provides appropriate error messages or responses without crashing.
+
+#### Tools/Methods:
+- Manual Testing: Simulate different player actions to verify the game’s behavior.
+- Automated Unit Testing: Test individual methods and classes (e.g., addItem(), `engage()`).
+- Integration Testing: Ensure all components work together as intended.

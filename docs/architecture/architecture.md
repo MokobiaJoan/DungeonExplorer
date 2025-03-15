@@ -1,50 +1,22 @@
-1. General Description
-Dungeon Explorer is a single-player, text-based (or optionally GUI-based) RPG where the player navigates through interconnected rooms in a dungeon, battles enemies, collects items, and progresses through multiple levels of increasing difficulty. The primary goal is to survive each level, defeat or avoid enemies, and gather valuable items and treasures.
+### Architectural Structure
 
-- Game Objectives:  
-  1. Provide an engaging exploration and combat experience.  
-  2. Allow players to manage resources (health, items) strategically.  
-  3. Offer a scalable foundation for additional features like puzzles, story elements, or multiplayer in the future.
 
-- Scope:  
-  - Initially focuses on core dungeon-crawling mechanics (movement, combat, inventory).  
-  - May expand to include puzzles, boss battles, or optional graphical interfaces.
+DungeonExplorer: The main game class that manages the overall game flow. It holds references to the Character, Dungeon, Combat, Inventory, GameState, and HowToPlay components. It provides methods to start the game, handle the main game loop, manage character selection, show instructions, save/load the game, and handle losses.
 
- 2. System Requirements
+ Character: The base class for all characters in the game, including Warrior, Mage, and Rogue. It includes methods to display the character's status, add items to the inventory, attack, and use special abilities. Each derived class provides its own unique methods.
 
- Functional Requirements
-1. Player Movement  
-   - The system must allow the player to move within the dungeon (north, south, east, west).  
-   - Movement should be restricted by walls or locked doors until specific conditions (keys, puzzles) are met.
+Dungeon: Manages the dungeon exploration. It contains a vector of Room objects and provides a method to explore the dungeon.
 
-2. Combat Mechanics  
-   - The system must handle turn-based or real-time combat between the player and enemies.  
-   - Enemies should have distinct behaviors (e.g., patrol, aggressive, passive).
+ Room: Represents a room in the dungeon. It includes a description of the room, an enemy, and an NPC. It provides a method to enter the room.
 
-3. Item Management  
-   - The system must allow players to pick up, drop, and use items.  
-   - Items can include weapons, potions, and special artifacts with unique effects.
+ Combat: Manages combat interactions between the player and enemies. It provides methods to engage in combat, handle player turns, and handle enemy turns.
 
-4. Dungeon Layout  
-   - The dungeon consists of multiple rooms connected by doors or corridors.  
-   - Each room can contain enemies, items, or special events (like traps).
+ Inventory: Manages the items that a character carries. It provides methods to add and use items.
 
-5. Game Progression  
-   - The system must track player progress (health, items, experience/levels).  
-   - The game ends when the player’s health reaches zero or when they complete the final level.
+ Item: The base class for all items in the game. Derived classes include Weapon, Armor, and Potion, each with their own unique methods.
 
- Non-Functional Requirements
-1. Performance  
-   - The game should run smoothly on standard desktop environments.  
-   - Memory usage should remain moderate, even with large dungeon layouts.
+ GameState: Represents the state of the game at any given point. It includes methods to get and set the player's health, mana, and current room index.
 
-2. Platform  
-   - Must compile and run on Windows, Linux, and macOS.  
-   - Uses standard C++17 (or higher) features to maintain portability.
+ SaveLoad: Handles saving and loading the game state. It provides methods to save and load the game state.
 
-3. Code Standards & Maintainability  
-   - Follow consistent naming conventions, clear file organization, and minimal global variables.  
-   - Provide documentation comments for all major classes, methods, and systems.
-
-4. Scalability  
-   - Architecture should accommodate adding new dungeon levels, enemy types, and game mechanics without extensive refactoring.
+ HowToPlay: Provides instructions on how to play the game. It includes a method to show the instructions.

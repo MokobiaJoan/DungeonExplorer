@@ -1,21 +1,47 @@
-Usage Scenarios
-Below are some high-level examples illustrating how players might interact with the game.
+### Game Scenario
 
-- Scenario 1: Basic Exploration  
-  1. The player starts in a dimly lit room with a single exit.  
-  2. They move east to the next room.  
-  3. They find a potion on the floor and pick it up.  
-  4. An enemy appears; combat begins.  
-  5. The player defeats the enemy and gains experience or loot.
 
-- Scenario 2: Combat & Inventory  
-  1. The player encounters two enemies at once.  
-  2. They use a weapon to attack the first enemy.  
-  3. Mid-combat, the player opens the inventory to consume a healing potion.  
-  4. The second enemy attempts to flee; the player can choose to pursue or let it go.  
-  5. After combat, the player loots items from fallen enemies.
+#### Starting the Game
 
-- Scenario 3: Locked Door & Puzzle  
-  1. The player reaches a locked door requiring a special key.  
-  2. The key is hidden in a puzzle room, where the player must solve a riddle or move blocks to unlock a chest.  
-  3. Once solved, the player retrieves the key and returns to open the door.
+1. Launching the Game:
+   - The player launches the game and selects "New Game" from the main menu.
+   - The start() method of the DungeonExplorer class is called.
+
+#### Character Selection
+
+2. Character Selection:
+   - The player is prompted to choose a character class: Warrior, Mage, or Rogue.
+   - The player reads the descriptions and selects "Warrior".
+   - The player enters their character's name and confirms the selection.
+   - The characterSelection() method of the DungeonExplorer class is called, creating an instance of the Warrior class.
+
+#### Entering the Room
+
+3. Entering the Room:
+   - The game starts, and the player finds themselves in a single room.
+   - The enter() method of the Room class is called, describing the room's contents.
+   - The room contains a health potion and an enemy.
+
+#### Interacting with Inventory
+
+4. Finding Items:
+   - The player finds a health potion in the room.
+   - The player adds the potion to their inventory using the addItem() method of the Inventory class.
+
+5. Using Items:
+   - The player takes damage from a trap in the room.
+   - The player uses a health potion to restore health using the useItem() method of the Inventory class.
+
+#### Combat Encounter
+
+6. Combat Encounter:
+   - The player encounters an enemy in the room.
+   - The engage() method of the Combat class is called to start the combat.
+   - During the player's turn, the player uses the useShield() method of the Warrior class to block damage.
+   - The enemy takes its turn, and the combat continues until the enemy is defeated.
+
+#### Ending the Game
+
+7. Ending the Game:
+   - After defeating the enemy, the player successfully completes the game.
+   - The game provides a summary of the player's achievements and experience points earned.
