@@ -2,17 +2,16 @@
 #define CHARACTER_H
 
 #include <string>
-using namespace std;
 
 class Character {
 protected:
-    string name;
+    std::string name;
     int health;
     int mana;
 public:
-    Character(const string& name, int health, int mana);
+    Character(const std::string &name, int health, int mana);
     virtual ~Character();
-    string getName() const;
+    std::string getName() const;
     int getHealth() const;
     int getMana() const;
     void setHealth(int h);

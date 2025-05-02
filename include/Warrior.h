@@ -2,17 +2,13 @@
 #define WARRIOR_H
 
 #include "Character.h"
-#include "Shield.h"
 
 class Warrior : public Character {
-private:
-    Shield* shield;
 public:
-    Warrior(const string& name);
-    virtual ~Warrior();
-    virtual void attack() override;
-    virtual void specialAbility() override; // Uses shield
-    void useShield();
+    Warrior(const std::string &name);
+    ~Warrior() override;
+    void attack() override;
+    void specialAbility() override;
 };
 
 #endif

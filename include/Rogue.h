@@ -1,3 +1,4 @@
+
 #ifndef ROGUE_H
 #define ROGUE_H
 
@@ -5,11 +6,10 @@
 
 class Rogue : public Character {
 public:
-    Rogue(const string& name);
-    virtual ~Rogue();
-    virtual void attack() override;
-    virtual void specialAbility() override;
-    void healSelf(int amount);
+    Rogue(const std::string &name);
+    ~Rogue() override;
+    void attack() override;
+    void specialAbility() override;
 };
 
 #endif

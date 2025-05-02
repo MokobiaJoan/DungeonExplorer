@@ -1,19 +1,16 @@
-add_executable(DungeonExplorerTests test_main.cpp)
-add_test(NAME BasicTests COMMAND DungeonExplorerTests)
 
+add_executable(TestCharacters
+    TestCharacters.cpp
+)
 
-cmake_minimum_required(VERSION 3.10)
-project(DungeonExplorer)
+target_include_directories(TestCharacters
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+)
 
-#Enabling C++17 or higher
+target_link_libraries(TestCharacters
+    PRIVATE
+        DungeonExplorerLib
+)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-
-# main executable file
-add_executable(DungeonExplorer src/main.cpp)
-
-#testing subdirectory
-enable_testing()
-add_subdirectory(tests)
+add_test(NAME TestCharacters COMMAND TestCharacters)

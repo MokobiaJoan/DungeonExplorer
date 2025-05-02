@@ -6,9 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-file(GLOB_RECURSE GAME_SOURCES
-    src/*.cpp
-)
+file(GLOB_RECURSE GAME_SOURCES src/*.cpp)
 list(FILTER GAME_SOURCES EXCLUDE REGEX "./gui/.")
 
 add_library(DungeonExplorerLib STATIC
@@ -43,3 +41,6 @@ target_link_libraries(DungeonExplorerGUI
         DungeonExplorerLib
         ${QtWidgets_LIB}
 )
+
+enable_testing()
+add_subdirectory(tests)
