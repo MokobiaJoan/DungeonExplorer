@@ -19,7 +19,7 @@ jobs:
             - name: Install dependencies
               run: |
                 sudo apt update 
-                sudo apt install -y g++ cmake
+                sudo apt install -y g++ cmake qt5-qmake qtbase5-dev
 
             - name: Configure CMake
               run: | 
