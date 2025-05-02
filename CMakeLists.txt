@@ -1,33 +1,45 @@
-cmake_minimum_required(VERSION 3.31)
-
-cmake_policy(SET CMP0048 NEW)
-
-project(DungeonExplorer VERSION 1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.16)
+project(DungeonExplorer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-include_directories(include)
+file(GLOB_RECURSE GAME_SOURCES
+    src/*.cpp
+)
+list(FILTER GAME_SOURCES EXCLUDE REGEX "./gui/.")
 
-file(GLOB_RECURSE GAME_SOURCES "src/*.cpp")
-file(GLOB_RECURSE GAME_HEADERS "include/*.hpp")
+add_library(DungeonExplorerLib STATIC
+    ${GAME_SOURCES}
+)
 
-add_library(DungeonExplorerLib ${GAME_SOURCES} ${GAME_HEADERS})
+target_include_directories(DungeonExplorerLib
+    PUBLIC
+        ${CMAKE_SOURCE_DIR}/include
+)
 
-target_include_directories(DungeonExplorerLib PUBLIC include)
-
-add_executable(DungeonExplorer src/main.cpp)
-
-target_link_libraries(DungeonExplorer PRIVATE DungeonExplorerLib)
-
-enable_testing()
-
-file(GLOB_RECURSE TEST_SOURCES "tests/*.cpp")
-
-if(TEST_SOURCES)
-add_executable(runTests ${TEST_SOURCES})
-
-target_link_libraries(runTests PRIVATE DungeonExplorerLib)
-
-add_test(NAME DungeonExplorerTests COMMAND runTests)
+find_package(Qt6 COMPONENTS Widgets QUIET)
+if (Qt6_FOUND)
+    set(QtWidgets_LIB Qt6::Widgets)
+else()
+    find_package(Qt5 COMPONENTS Widgets REQUIRED)
+    set(QtWidgets_LIB Qt5::Widgets)
 endif()
+
+add_executable(DungeonExplorerGUI
+    gui/main.cpp
+    gui/MainWindow.cpp
+)
+
+target_include_directories(DungeonExplorerGUI
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+)
+
+target_link_libraries(DungeonExplorerGUI
+    PRIVATE
+        DungeonExplorerLib
+        ${QtWidgets_LIB}
+)
