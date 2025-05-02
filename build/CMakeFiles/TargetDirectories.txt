@@ -1,8 +1,0 @@
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/DungeonExplorerLib.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/DungeonExplorerGUI.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/edit_cache.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/rebuild_cache.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/DungeonExplorerLib_autogen_timestamp_deps.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/DungeonExplorerLib_autogen.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/DungeonExplorerGUI_autogen_timestamp_deps.dir
-/home/joanmokobia/Documents/DungeonExplorer/build/CMakeFiles/DungeonExplorerGUI_autogen.dir
