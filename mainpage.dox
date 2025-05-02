@@ -1,0 +1,25 @@
+/**
+ * @mainpage Dungeon Explorer Game
+ *
+ * @section intro_sec Introduction
+ * Welcome to the documentation of the *Dungeon Explorer Game* written in C++.
+ * This game allows a player to explore a dungeon, fight monsters, and collect items.
+ *
+ * @section features_sec Features
+ * - Dungeon generation
+ * - Player movement
+ * - Monster encounters
+ * - Inventory management
+ *
+ * @section uml_sec UML Diagrams
+ * Below are the class and component diagrams:
+ *
+ * <img src="class_diagram.png" alt="Class Diagram" width="600"/>
+
+ * <img src="component_diagram.png" alt="Component Diagram" width="600"/>
+ * 
+ *
+ * @section credits_sec Credits
+ * Created by: Joan Mokobia
+ * Date: 2025
+ */
